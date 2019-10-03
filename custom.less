@@ -1,4 +1,10 @@
-/* cambio font in Decima TEST*/
+/* @import variables e mixin*/
+
+@import "variables.less";
+@import "mixin.less";
+
+
+/* cambio font in Decima*/
 body {
   font-family: "decimaregular", Helvetica, Arial, sans-serif;
   font-size: 20px;
@@ -116,7 +122,7 @@ h6,
 }
 
 .frecciona {
-	color: #02b291;
+	color: @themeColor;
 	font-size: 50px;
 	font-weight: bold;
 	}
@@ -141,7 +147,7 @@ h6,
   font-size: 13px;
   line-height: 1.42857143;
   border-radius: 4px;
-  background-color: #02b291;
+  background-color: @themeColor;
   border: 1px solid #2ed8b8;
 }
 
@@ -222,7 +228,7 @@ h6,
 /*---------TOP-------------*/
 .desktop-search {
     display: none;
-    background: #02b291;
+    background: @themeColor;
     text-align: right;
     margin: 0 -15px;
     color: #fff;
@@ -232,7 +238,7 @@ h6,
 
 form input#cercasito,
 input#cercasito{
-    background-color: #02b291;
+    background-color: @themeColor;
     border: 0px solid #000;
     color: #ffffff !important;
     font-size: 130%;
@@ -297,11 +303,11 @@ form input#cercasito::placeholder { /* Most modern browsers support this now. */
 	font-size: 14px;}
 	
 #top .cerca {
-	background-color: #02b291;
+	background-color: @themeColor;
 	padding: 11px 10px 12px 10px;
 	margin-left: -1px;
 	margin-right: -1px;
-	border-right: #02b291 ;
+	border-right: @themeColor ;
 	}
 
 #top .cerca a{
@@ -420,7 +426,7 @@ font-size: 16px;
       font-size: 18px;
       text-align: center;
       vertical-align: bottom;
-      background-color: #02b291;
+      background-color: @themeColor;
         
         &::hover {
           color: #fff;
@@ -539,8 +545,8 @@ font-size: 16px;
     }
     
     button {
-        background-color: #02b291;
-        border-color: #02b291;
+        background-color: @themeColor;
+        border-color: @themeColor;
         float: right;
         font-size: 18px;
         height: 46px;
@@ -554,7 +560,7 @@ font-size: 16px;
 /*--------------NEWS---------------*/
 
 .newsHP {
-	background: #e0e0e0;}
+	background: @secondBackgroundColor;}
 	
 .news {
   padding: 0;
@@ -631,7 +637,7 @@ font-size: 16px;
               height: 50px;
             }
             .data {
-              background: #02b291;
+              background: @themeColor;
               color: #FFF;
               border-radius: 50%;
               width: 60px;
@@ -690,7 +696,7 @@ font-size: 16px;
 
 
 .data {
-  background: #02b291;
+  background: @themeColor;
   color: #FFF;
   border-radius: 50%;
   width: 60px;
@@ -812,7 +818,7 @@ font-size: 16px;
 #blog-listing-medium {
     .farmacie {
         font-size: 16px;
-        border-bottom: dotted 1px #02b291;
+        border-bottom: dotted 1px @themeColor;
         padding-bottom: 10px;
         line-height: 30px;
         
@@ -820,14 +826,14 @@ font-size: 16px;
             font-family: "decimaregular", Helvetica, Arial, sans-serif;
             font-weight: normal;
             text-transform: uppercase;
-            color: #02b291;
+            color: @themeColor;
             font-size: 16px;
             margin-top: 7px;
             margin-bottom: 0px;
         }
         
         i{
-            color: #02b291;
+            color: @themeColor;
             font-size: 22px;
 
         }
@@ -837,7 +843,7 @@ font-size: 16px;
             height: 40px;
             line-height: 40px;
             border-radius: 25px;
-            border: solid 1px #02b291;
+            border: solid 1px @themeColor;
             text-align: center;
         }
         
@@ -863,14 +869,14 @@ font-size: 16px;
         .orari {
            font-weight: bold;
            text-transform: uppercase;
-           color: #02b291;
+           color: @themeColor;
            font-size: 16px;
         }
     }
     .post {
         .quando {
             font-size: 16px;
-            border-bottom: dotted 1px #02b291;
+            border-bottom: dotted 1px @themeColor;
             padding-bottom: 10px;
             line-height: 30px;
             span{
@@ -886,7 +892,7 @@ font-size: 16px;
 #blog-post {
     .quando {
         font-size: 16px;
-        border-bottom: dotted 1px #02b291;
+        border-bottom: dotted 1px @themeColor;
         padding-bottom: 10px;
         line-height: 30px;
         font-size: 16px;
@@ -960,7 +966,7 @@ font-size: 16px;
 
 /*---------------applicazioni---------------------*/
 
-.carousel-control 			 {font-size: 40px;font-weight: bold;padding-top: -14px;background-color: #02b291;margin-top: 45px;max-height: 55px;}
+.carousel-control 			 {font-size: 40px;font-weight: bold;padding-top: -14px;background-color: @themeColor;margin-top: 45px;max-height: 55px;}
 .carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
 @media (max-width: 767px) {
 		.carousel-inner .active.left { left: -50%; }
@@ -1131,19 +1137,19 @@ margin-bottom: 5px;
 
 
 .background-white h2{
-		border-bottom: 1px solid #02b291;
+		border-bottom: 1px solid @themeColor;
     padding-bottom: 8px;
 }
 
 .background-gray h2{
-		border-bottom: 1px solid #02b291;
+		border-bottom: 1px solid @themeColor;
     padding-bottom: 8px;
 }
 
 
 
 .boxDati h2{
-		border-bottom: 1px solid #02b291;
+		border-bottom: 1px solid @themeColor;
 		padding-bottom: 4px;
 		font-size: 28px;
 }
@@ -1171,7 +1177,7 @@ margin-bottom: 5px;
 }
 
 .borderbottomverde {
-    border-bottom: 1px solid #02b291;
+    border-bottom: 1px solid @themeColor;
 }
 
 .borderbottomgrigio {
@@ -1362,7 +1368,7 @@ background-color: #fff;
 
 .boxTipologia.servizio > h2 > a:hover,
 .boxTipologia.servizio > h2 > a:focus {
-	color: #02b291;
+	color: @themeColor;
 }
 
 .boxTipologia.servizio > h2 > a > .more-less {
@@ -1413,7 +1419,7 @@ background-color: #fff;
 }
 
 #org-tree .jstree-icon.jstree-ocl:hover {
-	color: #02b291;
+	color: @themeColor;
 }
 
 #org-tree.jstree-default .jstree-anchor {
@@ -1428,7 +1434,7 @@ background-color: #fff;
 	background-color: transparent;
 	border-radius: 0;
 	box-shadow: none;
-	color: #02b291;
+	color: @themeColor;
 	text-decoration: underline;
 }
 
@@ -1488,7 +1494,7 @@ background-color: #fff;
     .more-less {
         float: right;
         color: #fff;
-        background-color: #02b291;
+        background-color: @themeColor;
         width:30px;
         height:30px;
         border-radius:15px;
@@ -1811,7 +1817,7 @@ footer .footer-list li a {
 
 .owl-prev:hover,
 .owl-next:hover {
-	background-color: #02b291 !important;
+	background-color: @themeColor !important;
 }
 
 
@@ -1870,7 +1876,7 @@ h6,
 }
 
 .btn-map {
-	background-color: #02b291;
+	background-color: @themeColor;
 	color: #fff;
 }
 .btn-map:hover,

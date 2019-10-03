@@ -1,0 +1,239 @@
+/**
+ *	GENERAL MIXINS
+ *
+ */
+
+.FontAwesome() {
+	display: inline-block;
+	font-family: FontAwesome;
+	font-feature-settings: normal;
+	font-kerning: auto;
+	font-language-override: normal;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-style: normal;
+	font-synthesis: weight style;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1;
+	text-rendering: auto;
+	transform: translate(0px, 0px);
+}
+.FontFace(@fontname, @fontfile, @fontweight:normal, @fontstyle:normal) {
+	@font-face {
+		font-family: "@{fontname}";
+		src: url("font/@{fontfile}.eot");
+		src: url("font/@{fontfile}.eot?#iefix") format("embedded-opentype"),
+			url("font/@{fontfile}.woff2") format("woff2"),
+			url("font/@{fontfile}.woff") format("woff"),
+			url("font/@{fontfile}.ttf") format("truetype"),
+			url("font/@{fontfile}.svg#@{fontname}") format("svg");
+		font-weight: @fontweight;
+		font-style: @fontstyle;
+	}
+/*
+  // Chrome for Windows rendering fix
+	@media screen and (-webkit-min-device-pixel-ratio: 0) {
+		@font-face {
+			font-family: "@{fontname}";
+			src: url("@{fontfile}.svg#@{fontname}") format("svg");
+		}
+	}
+*/
+}
+
+.HexBackgroundToRGBA(@color; @alpha: 1){
+/*
+	@channelRed:red(@color);
+	@channelGreen:green(@color);
+	@channelBlue:blue(@color);
+	background-color: rgba(@channelRed, @channelGreen, @channelBlue, @alpha);
+*/
+	background-color: @color;
+	background-color: rgba(red(@color), green(@color), blue(@color), @alpha);
+}
+.BackgroundClip(@argument: padding-box) {
+	-moz-background-clip: @argument;
+	-webkit-background-clip: @argument;
+	background-clip: @argument;
+}
+.BackgroundSize(@string) {
+	-webkit-background-size: @string;
+	-moz-background-size: @string;
+	-o-background-size:  @string;
+	background-size: @string;
+}
+.BoxShadow (@string) {
+	-webkit-box-shadow: @string;
+	-moz-box-shadow: @string;
+	box-shadow: @string;
+}
+.BoxInnerShadow (@string) {
+	-webkit-box-shadow: inset @string;
+	-moz-box-shadow: inset @string;
+	box-shadow: inset @string;
+}
+.BoxSizing (@type: border-box) {
+	-webkit-box-sizing: @type;
+	-moz-box-sizing: @type;
+	box-sizing: @type;
+}
+.Rounded(@radius:10px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+	.BackgroundClip();
+	.BoxSizing()
+}
+.BorderRadius(@topleft: 0; @topright: 0; @bottomright: 0; @bottomleft: 0) {
+	-webkit-border-top-left-radius: @topleft;
+	-webkit-border-top-right-radius: @topright;
+	-webkit-border-bottom-right-radius: @bottomright;
+	-webkit-border-bottom-left-radius: @bottomleft;
+
+	-moz-border-radius-topleft: @topleft;
+	-moz-border-radius-topright: @topright;
+	-moz-border-radius-bottomright: @bottomright;
+	-moz-border-radius-bottomleft: @bottomleft;
+
+	border-top-left-radius: @topleft;
+	border-top-right-radius: @topright;
+	border-bottom-right-radius: @bottomright;
+	border-bottom-left-radius: @bottomleft;
+}
+.Gradient(@color: #F5F5F5; @start: #EEE; @stop: #FFF) {
+	background: @color; /* Old browsers */
+	background: -moz-linear-gradient(top,  @start 0%, @stop 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@start), color-stop(100%,@stop)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  @start 0%,@stop 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  @start 0%,@stop 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  @start 0%,@stop 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  @start 0%,@stop 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@start', endColorstr='@stop',GradientType=0 ); /* IE6-9 */
+}
+.GradientRGB(@color: #F5F5F5; @start: 0; @stop: 255) {
+	background: @color;
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(@start,@start,@start)), color-stop(1, rgb(@stop,@stop,@stop)));
+	background: -ms-linear-gradient(bottom, rgb(@start,@start,@start) 0%, rgb(@stop,@stop,@stop) 100%); background: -moz-linear-gradient(center bottom, rgb(@start,@start,@start) 0%, rgb(@stop,@stop,@stop) 100%);
+	background: -o-linear-gradient(rgb(@stop,@stop,@stop), rgb(@start,@start,@start));
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",rgb(@stop,@stop,@stop),rgb(@start,@start,@start)));
+}
+.Opacity(@opacity:0.7) {
+	-moz-opacity: @opacity;
+	-khtml-opacity: @opacity;
+	-webkit-opacity: @opacity;
+	@opperc: @opacity * 100;
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
+	filter: ~"alpha(opacity=@{opperc})";
+	opacity: @opacity;
+}
+.Animation (@name; @duration: 300ms; @timing-function: linear; @delay: 0; @iteration-count: 1; @direction: normal; @fill-mode: none; @play-state: running) {
+	-webkit-animation: @name @duration @timing-function @delay @iteration-count @direction @fill-mode @play-state ;
+	-moz-animation: @name @duration @timing-function @delay @iteration-count @direction @fill-mode @play-state ;
+	-ms-animation: @name @duration @timing-function @delay @iteration-count @direction @fill-mode @play-state ;
+	animation: @name @duration @timing-function @delay @iteration-count @direction @fill-mode @play-state ;
+}
+.AnimationPlayState (@string: running) {
+	-webkit-animation-play-state: @string;
+	animation-play-state: @string;
+}
+.Keyframes(@name; @from; @to) {
+	@-moz-keyframes @name {
+		from {@from();}
+		to {@to();}
+	}
+	@-webkit-keyframes @name {
+		from {@from();}
+		to {@to();}
+	}
+	@-ms-keyframes @name {
+		from {@from();}
+		to {@to();}
+	}
+	@keyframes @name {
+		from {@from();}
+		to {@to();}
+	}
+}
+.Rotate(@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform: rotate(@deg);
+	-ms-transform: rotate(@deg);
+	-o-transform: rotate(@deg);
+	transform: rotate(@deg);
+}
+.RotateX(@deg) {
+	-webkit-transform: rotateX(@deg);
+	-moz-transform: rotateX(@deg);
+	-ms-transform: rotateX(@deg);
+	-o-transform: rotateX(@deg);
+	transform: rotateX(@deg);
+}
+.RotateY(@deg) {
+	-webkit-transform: rotateY(@deg);
+	-moz-transform: rotateY(@deg);
+	-ms-transform: rotateY(@deg);
+	-o-transform: rotateY(@deg);
+	transform: rotateY(@deg);
+}
+.Scale(@factor) {
+	-webkit-transform: scale(@factor);
+	-moz-transform: scale(@factor);
+	-ms-transform: scale(@factor);
+	-o-transform: scale(@factor);
+	transform: scale(@factor);
+}
+.Skew(@deg; @deg2) {
+	-webkit-transform: skew(@deg, @deg2);
+	-moz-transform: skew(@deg, @deg2);
+	-ms-transform: skew(@deg, @deg2);
+	-o-transform: skew(@deg, @deg2);
+	transform: skew(@deg, @deg2);
+}
+.Translate(@x:0; @y:0) {
+	-webkit-transform: translate(@x, @y);
+	-moz-transform: translate(@x, @y);
+	-ms-transform: translate(@x, @y);
+	-o-transform: translate(@x, @y);
+	transform: translate(@x, @y);
+}
+.Translate3d(@x; @y: 0; @z: 0) {
+	-webkit-transform: translate3d(@x, @y, @z);
+	-moz-transform: translate3d(@x, @y, @z);
+	-ms-transform: translate3d(@x, @y, @z);
+	-o-transform: translate3d(@x, @y, @z);
+	transform: translate3d(@x, @y, @z);
+}
+.Perspective(@value: 1000) {
+	-webkit-perspective: @value;
+	-moz-perspective: @value;
+	-ms-perspective: @value;
+	perspective: @value;
+}
+.TransformOrigin(@x:center; @y:center) {
+	-webkit-transform-origin: @x @y;
+	-moz-transform-origin: @x @y;
+	-ms-transform-origin: @x @y;
+	-o-transform-origin: @x @y;
+	transform-origin: @x @y;
+}
+.Transform(@string){
+	-webkit-transform: @string;
+	-moz-transform: @string;
+	-ms-transform: @string;
+	-o-transform: @string;
+	transform: @string;
+}
+.TransformStyle(@string: preserve-3d){
+	-webkit-transform-style: @string;
+	-moz-transform-style: @string;
+	-ms-transform-style: @string;
+	transform-style: @string;
+}
+.Transition(@transition: all 0.3s) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-ms-transition: @transition;
+	-o-transition: @transition;
+	transition: @transition;
+}

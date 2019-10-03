@@ -1,4 +1,28 @@
-/* cambio font in Decima TEST*/
+/* @import variables e mixin*/
+/**
+ *	VARIABLES
+ */
+/** =============================================================================================================================
+ *	GENERAL VARIABLES: settings for some of the most global styles
+ */
+/* bianco */
+/* grigio chiaro */
+/* verde acqua */
+/**
+ *	Colors -> Grayscale
+ */
+/**
+ *	font
+ */
+/** =============================================================================================================================
+ *	MEDIA QUERY BREACKPOINTS: Bootstrap Variables
+ *	Define the breakpoints at which your layout will change, adapting to different screen sizes.
+ */
+/**
+ *	GENERAL MIXINS
+ *
+ */
+/* cambio font in Decima*/
 body {
   font-family: "decimaregular", Helvetica, Arial, sans-serif;
   font-size: 20px;
@@ -259,7 +283,7 @@ form input#cercasito::placeholder {
   padding: 11px 10px 12px 10px;
   margin-left: -1px;
   margin-right: -1px;
-  border-right: #02b291 ;
+  border-right: #02b291;
 }
 #top .cerca a {
   padding: 0px 10px 0px 10px;
